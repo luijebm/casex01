@@ -1,6 +1,11 @@
-# Lbmcasex01
 
-By Luís Bello Moraes
+
+# CASEX01 - BACKEND+FRONTED
+===========================
+By Luis Bello Moraes
+lbm@theline.pt
+phone: 00 351 934 770 492
+
 
 This is the root folder of the Frontend Module generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
@@ -15,7 +20,7 @@ In folder "\ng6\lbmcasex01\src\environments" you will find the environment varia
     endPointStats: 'http://localhost:9000/stats'
 
 This is the server hosting the JAVA application: http://localhost:9000, used mainly for testing purposes.
-In production 
+
 
 ## Build
 
@@ -24,4 +29,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Git failed to upload the Symbolic Link.
 
 Please create a symlink  from folder "\ng6\lbmcasex01\dist" to folder "\src\main\resources\static\dist"
-The java application is expecting the webpack files to in the following folder: "\src\main\resources\static\dist\lbmcasex01"
+The java application is expecting the webpack files to be in the following folder: "\src\main\resources\static\dist\lbmcasex01"

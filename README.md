@@ -1,10 +1,10 @@
  
 
-CASEX01
-=================
+# CASEX01 - BACKEND+FRONTED
+===========================
 By Luis Bello Moraes
 lbm@theline.pt
-+ 351 934 770 492
+phone: 00 351 934 770 492
 
 
 Please take notice of the following info:
@@ -12,23 +12,31 @@ Please take notice of the following info:
 - environment variables are in the following file "\src\main\resources\application.yml" 
 
 
-  endpoints:
+ENDPOINTS
+
     airports: http://localhost:8080/airports/ 
+
     fares: http://localhost:8080/fares/
 
-  statsfilepath: stats/storage.externalize
+OAUTH
 
-  oauth:
     tokenUrl: http://localhost:8080/oauth/token
+
     grantType: client_credentials
+
     clientId: travel-api-client
+
     clientSecret: psw
 
-  allowedcors: http://localhost:4200
-  (this one is for angular testing porposes, to enable cross-origin resource sharing)
+OTHERS
+
+    statsfilepath: stats/storage.externalize
+     
+    allowedcors: http://localhost:4200
+ (this one is for angular testing porposes, to enable cross-origin resource sharing)
 
 
-The Frontend Module was made in Angular 6. You can find it in folder "/ng6"
++The Frontend Module was made in Angular 6. You can find it in folder "/ng6"
 The frontend build files are included in the java application by the use of a symlink.
 Git failed to add this symbolic link to the repo... 
 Please refer to "/ng6/readme" for more info. It is crucial to create this link before building the fronted.
