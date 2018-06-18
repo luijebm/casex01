@@ -1,27 +1,27 @@
 # Lbmcasex01
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+By Luís Bello Moraes
+
+This is the root folder of the Frontend Module generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+In folder "\ng6\lbmcasex01\src\environments" you will find the environment variables. There are currently defined as follows:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    endPointAirports: 'http://localhost:9000/airports',
+    endPointFares: 'http://localhost:9000/fares',
+    endPointStats: 'http://localhost:9000/stats'
+
+This is the server hosting the JAVA application: http://localhost:9000, used mainly for testing purposes.
+In production 
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+Git failed to upload the Symbolic Link.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Please create a symlink  from folder "\ng6\lbmcasex01\dist" to folder "\src\main\resources\static\dist"
+The java application is expecting the webpack files to in the following folder: "\src\main\resources\static\dist\lbmcasex01"
