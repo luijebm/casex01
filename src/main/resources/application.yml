@@ -1,0 +1,18 @@
+server:
+    port: 9000
+    contextPath: /
+logging:
+  level:
+    root: INFO
+general:
+  endpoints:
+    airports: http://localhost:8080/airports/
+    fares: http://localhost:8080/fares/
+  statsfilepath: stats/storage.externalize
+  allowedcors: http://localhost:4200
+  oauth:
+    tokenUrl: http://localhost:8080/oauth/token
+    grantType: client_credentials
+    clientId: travel-api-client
+    clientSecret: psw
+

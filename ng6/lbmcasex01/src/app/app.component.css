@@ -1,0 +1,11 @@
+#menu{
+    color:#2b3c9c;
+}
+#menu a{
+    color:#3f51b5;
+    padding: 10px;
+    text-decoration: none;
+}
+#menu a:hover{
+    text-decoration: underline;
+}
