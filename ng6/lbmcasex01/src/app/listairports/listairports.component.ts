@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith, catchError, finalize } from 'rxjs/operators';
+import { map, startWith, catchError, finalize,merge } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
 import { Fares } from '../models/fares.model';
 import { Locations } from '../models/locations.model';
@@ -25,6 +25,7 @@ export class ListairportsComponent extends FaresComponent implements OnInit {
   dataSource: MatTableDataSource<Locations>;
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(svc: DataService, fb: FormBuilder) { super(svc,fb)}
 
@@ -34,16 +35,11 @@ export class ListairportsComponent extends FaresComponent implements OnInit {
 
   gAfterViewInit() {
         
-    /* reset the paginator after sorting
+   
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     
-    merge(this.sort.sortChange, this.paginator.page)
-        .pipe(
-            tap(() => this.loadLessonsPage())
-        )
-        .subscribe();
+    merge(this.sort.sortChange, this.paginator.page).subscribe();
 
-        */
 }
 
   gotLocationsData(): void {
@@ -53,6 +49,7 @@ export class ListairportsComponent extends FaresComponent implements OnInit {
 
     this.dataSource.sort = this.sort;
     this.sortedData = this.locations.slice();
+    this.dataSource.paginator = this.paginator;
   }
 
 
