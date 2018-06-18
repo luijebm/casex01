@@ -41,7 +41,7 @@ The frontend build files are included in the java application by the use of a sy
 Git failed to add this symbolic link to the repo... 
 Please refer to "/ng6/readme" for more info. It is crucial to create this link before building the fronted.
 
-After creating the symlink, building the frontend in NG and building the backend, please click on 
+After creating the symlink, please build the frontend in its home directory `ng build` and build the backend in the root folder `gradlew bootRun`, please click on 
 
 [http://localhost:9000/index.html](http://localhost:9000/index.html)
 
