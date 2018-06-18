@@ -1,15 +1,14 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith, catchError, finalize,merge } from 'rxjs/operators';
+import { FormBuilder } from '@angular/forms';
+
+import { merge } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
-import { Fares } from '../models/fares.model';
+
 import { Locations } from '../models/locations.model';
 import { FaresComponent } from '../fares/fares.component';
 import {MatPaginator, MatTableDataSource,MatSort,Sort} from '@angular/material';
 
 
-const ELEMENT_DATA: Locations[] = [];
 
 @Component({
   selector: 'app-listairports',
@@ -38,9 +37,16 @@ export class ListairportsComponent extends FaresComponent implements OnInit {
    
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     
-    merge(this.sort.sortChange, this.paginator.page).subscribe();
+    //merge(this.sort.sortChange, this.paginator.page).pipe().subscribe();
 
 }
+
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim(); // Remove whitespace
+  filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  this.dataSource.filter = filterValue;
+}
+
 
   gotLocationsData(): void {
     console.info('-- ListairportsComponent gotLocations()');
