@@ -1,6 +1,6 @@
 
 
-# CASEX01 - BACKEND+FRONTED
+# CASEX01 - ANGULAR 6 FRONTEND
 =========
 By Luis Bello Moraes
 lbm@theline.pt

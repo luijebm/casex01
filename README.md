@@ -1,6 +1,6 @@
  
 
-# CASEX01 - BACKEND+FRONTED
+# CASEX01 - BACKEND+FRONTEND
 =========
 By Luis Bello Moraes
 lbm@theline.pt
@@ -41,6 +41,11 @@ The frontend build files are included in the java application by the use of a sy
 Git failed to add this symbolic link to the repo... 
 Please refer to "/ng6/readme" for more info. It is crucial to create this link before building the fronted.
 
+After creating the symlink, building the frontend in NG and building the backend, please click on 
+
+[http://localhost:9000/index.html](http://localhost:9000/index.html)
+
+
 Please feel welcome to call if you need any assistance.
 
 Thank you very much.
@@ -48,4 +53,3 @@ Luis
 
 IT WAS FUN! :D
 
-[http://localhost:9000/index.html](http://localhost:9000/index.html)
