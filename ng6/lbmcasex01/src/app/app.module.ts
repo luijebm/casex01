@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {MatPaginatorModule,MatSortModule ,MatAutocompleteModule,MatFormFieldModule,MatInputModule,MatStepperModule,MatIconModule, MatButtonModule,MatCardModule, MatProgressSpinnerModule,MatTableModule} from '@angular/material';
+import {MatSnackBarModule,MatPaginatorModule,MatSortModule ,MatAutocompleteModule,MatFormFieldModule,MatInputModule,MatStepperModule,MatIconModule, MatButtonModule,MatCardModule, MatProgressSpinnerModule,MatTableModule} from '@angular/material';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,7 +44,8 @@ import { ListairportsComponent } from './listairports/listairports.component';
     AppRoutingModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     DataService,

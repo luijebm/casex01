@@ -4,6 +4,8 @@ import {Locations} from '../models/locations.model';
 import {Fares} from '../models/fares.model';
 import {Stats} from '../models/stats.model';
 import {Observable} from 'rxjs';
+import {MatSnackBar} from '@angular/material';
+
 
 import { environment } from '../../environments/environment';
 
@@ -18,11 +20,12 @@ export class DataService {
   endPointFares: string;
   endPointStats: string;
 
-  constructor(private _http : HttpClient) { 
+  constructor(private _http : HttpClient, public snackBar: MatSnackBar) { 
     this.endPointAirports= environment.endPointAirports;
     this.endPointFares= environment.endPointFares;
     this.endPointStats=environment.endPointStats;
   }
+
 
   getLocationData(): Observable<Array<Locations>>{
 
@@ -34,7 +37,7 @@ export class DataService {
           ,catchError((err: any, caught) => {
           
             console.log('err.error =', err.error, ';');
-          
+            this.dropMessage('Error getting Locations Data, please check your connection to the server.');
             return Observable.throw(err);
           })
         );
@@ -49,10 +52,11 @@ export class DataService {
           ,catchError((err: any, caught) => {
           
             console.log('err.error =', err.error, ';');
-          
+            this.dropMessage('Error getting Fares Data, please check your connection to the server.');
             return Observable.throw(err);
           })
         );
+
         
 
   }
@@ -67,11 +71,16 @@ export class DataService {
           ,catchError((err: any, caught) => {
           
             console.log('err.error =', err.error, ';');
-          
+            this.dropMessage('Error getting Stats Data, please check your connection to the server. ' );
+            
             return Observable.throw(err);
           })
         );
         
 
   }
+  dropMessage (msg:string){
+    let snackBarRef = this.snackBar.open(msg,'',{duration: 5000} );
+  }
+  
 }
