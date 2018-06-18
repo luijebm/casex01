@@ -45,6 +45,8 @@ After creating the symlink, building the frontend in NG and building the backend
 
 [http://localhost:9000/index.html](http://localhost:9000/index.html)
 
+Paths are not correctly setup in the ResourceHandlerRegistry to support Angular routing system, so if you refresh an Angular page you will get a 404.
+Please stick to this URL for app launching.
 
 Please feel welcome to call if you need any assistance.
 
