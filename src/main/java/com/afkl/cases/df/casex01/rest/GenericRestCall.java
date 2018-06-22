@@ -48,9 +48,9 @@ public class GenericRestCall {
 						e.printStackTrace();
 					}
 					return result;
-				});
+				}).thenApply(s -> s);
 
-	}
+	}	
 
 
 

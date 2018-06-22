@@ -1,5 +1,8 @@
 package com.afkl.cases.df.casex01.controller;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,17 +32,16 @@ public class AirportsRestController {
             LOG.trace(">> getJSONAirport()");
         }
         
-		String result="";
+        CompletableFuture<String> result;
+		result= gen.getJSONAsyncUsingCompletableFuture(cp.getEndpoint("airports"));
+		
+		
 		try {
-			result= gen.processRequest(cp.getEndpoint("airports"));
-		} catch (InterruptedException e) {
-	        if(LOG.isErrorEnabled()){
-	            LOG.error("-- getJSONAirport() > " + e.getMessage(),e);
-	        }
+			return result.get();
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		return result;
+		return null;
 	}
 }

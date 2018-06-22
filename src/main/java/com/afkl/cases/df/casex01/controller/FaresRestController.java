@@ -1,5 +1,8 @@
 package com.afkl.cases.df.casex01.controller;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,15 +36,17 @@ public class FaresRestController {
         }
         
         
-		String result="";
+        CompletableFuture<String> result;
+		result= gen.getJSONAsyncUsingCompletableFuture(String.format(cp.getEndpoint("fares") + "%s/%S", originCode, destinationCode));
+		
+		
 		try {
-			result= gen.processRequest(String.format(cp.getEndpoint("fares") + "%s/%S", originCode, destinationCode));
-		} catch (InterruptedException e) {
-	        if(LOG.isErrorEnabled()){
-	            LOG.error("-- getJSONFares() > " + e.getMessage(),e);
-	        }
+			return result.get();
+		} catch (InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result;
+		return null;
+		
 	}
 }
