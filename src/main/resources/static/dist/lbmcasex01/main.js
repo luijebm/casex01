@@ -89,7 +89,7 @@ module.exports = "#menu{\r\n    color:#2b3c9c;\r\n}\r\n#menu a{\r\n    color:#3f
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>{{title}}</h1>\r\n<nav id=\"menu\">\r\n    <a routerLink=\"/fares\">Fares</a>   <a routerLink=\"/dashboard\">Dashboard</a>   \r\n</nav>\r\n\r\n<hr style=\"\r\ncolor: #3f51b5;\r\nborder-top-color: #3f51b5;\r\nborder-bottom-color: #00a1de;\r\nborder: (1,5,10,20);\r\n\">\r\n\r\n<div style=\"color:#fff; margin-bottom:80px; margin-top:40px\">\r\n    <h1>Welcome to KLM Casex01</h1>\r\n    <h5>by Luis Bello Moraes</h5>\r\n  </div>\r\n\r\n  \r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<h1>{{title}}</h1>\r\n<nav id=\"menu\">\r\n    <a routerLink=\"/fares\">Fares</a>   <a routerLink=\"/dashboard\">Dashboard</a>     <a routerLink=\"/list-airports\">List airports</a>    \r\n</nav>\r\n\r\n<hr style=\"\r\ncolor: #3f51b5;\r\nborder-top-color: #3f51b5;\r\nborder-bottom-color: #00a1de;\r\nborder: (1,5,10,20);\r\n\">\r\n\r\n<div style=\"color:#fff; margin-bottom:80px; margin-top:40px\">\r\n    <h1>Welcome to KLM Casex01</h1>\r\n    <h5>by Luis Bello Moraes</h5>\r\n  </div>\r\n\r\n  \r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -198,7 +198,11 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatButtonModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatProgressSpinnerModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBarModule"]
             ],
             providers: [
                 _services_data_service__WEBPACK_IMPORTED_MODULE_7__["DataService"],
@@ -225,7 +229,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* DashboardComponent's private CSS styles */\r\n[class*='col-'] {\r\n    float: left;\r\n    padding-right: 20px;\r\n    padding-bottom: 20px;\r\n  }\r\n[class*='col-']:last-of-type {\r\n    padding-right: 0;\r\n  }\r\na {\r\n    text-decoration: none;\r\n  }\r\n*, *:after, *:before {\r\n    box-sizing: border-box;\r\n  }\r\nh3 {\r\n    text-align: center; margin-bottom: 0;\r\n  }\r\nh4 {\r\n    position: relative;\r\n    margin-top: 80px; text-align: center; width: 100%;\r\n    margin-bottom: 20px;\r\n    font-size: 18px;\r\n  }\r\n.graph{\r\n    min-width:500px;\r\n    width:50%;\r\n    float: left;\r\n    padding: 60px;\r\n  }\r\n.grid {\r\n    margin: 0;\r\n  }\r\n.col-1-4 {\r\n    width: 25%;\r\n  }\r\n.module {\r\n    padding: 20px;\r\n    text-align: center;\r\n    color: #eee;\r\n    max-height: 120px;\r\n    min-width: 120px;\r\n    background-color: #607d8b;\r\n    border-radius: 2px;\r\n  }\r\n.module:hover {\r\n    background-color: #eee;\r\n    cursor: pointer;\r\n    color: #607d8b;\r\n  }\r\n.grid-pad {\r\n    padding: 10px 0;\r\n  }\r\n.grid-pad > [class*='col-']:last-of-type {\r\n    padding-right: 20px;\r\n  }\r\n@media (max-width: 600px) {\r\n    .module {\r\n      font-size: 10px;\r\n      max-height: 75px; }\r\n  }\r\n@media (max-width: 1024px) {\r\n    .grid {\r\n      margin: 0;\r\n    }\r\n    .module {\r\n      min-width: 60px;\r\n    }\r\n  }"
+module.exports = "\r\n  h4 {\r\n    position: relative;\r\n    margin-top: 80px; text-align: center; width: 100%;\r\n    margin-bottom: 20px;\r\n    font-size: 18px;\r\n  }\r\n  .graph{\r\n    min-width:500px;\r\n    width:50%;\r\n    float: left;\r\n    padding: 60px;\r\n  }"
 
 /***/ }),
 
@@ -302,7 +306,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <mat-card class=\"example-card\">\n  \n    <mat-vertical-stepper [linear]=\"true\" #stepper (selectionChange)=\"changedStep($event)\"  (animationDone)=\"stepperAnimationDone()\">\n  \n      <mat-step [stepControl]=\"formOrigin\" editable=\"true\" #stepOrigin>\n        <form [formGroup]=\"formOrigin\">\n          <ng-template matStepLabel>Select your origin </ng-template>\n          <mat-form-field>\n  \n            <input type=\"text\" formControlName=\"originControl\" placeholder=\"From\" aria-label=\"From\" matInput [formControl]=\"originControl\"\n              [matAutocomplete]=\"autoOrig\">\n            <mat-autocomplete autoActiveFirstOption #autoOrig=\"matAutocomplete\" [displayWith]=\"locationDisplayFn\">\n              <mat-option *ngFor=\"let location of filteredOriginLocations$ | async \" [value]=\"location\">\n                {{ location.name }}\n              </mat-option>\n            </mat-autocomplete>\n  \n  \n  \n          </mat-form-field>\n  \n        </form>\n      </mat-step>\n  \n      <mat-step [stepControl]=\"formDestination\" editable=\"true\" #stepDestination>\n        <form [formGroup]=\"formDestination\">\n          <ng-template matStepLabel>Select your destination </ng-template>\n          <mat-form-field>\n  \n            <input type=\"text\" formControlName=\"destinationControl\" placeholder=\"To\" aria-label=\"To\" matInput [formControl]=\"destinationControl\"\n              [matAutocomplete]=\"autoDest\">\n            <mat-autocomplete autoActiveFirstOption #autoDest=\"matAutocomplete\" [displayWith]=\"locationDisplayFn\">\n              <mat-option *ngFor=\"let location of filteredDestinationLocations$ | async \" [value]=\"location\">\n                {{ location.name }}\n              </mat-option>\n            </mat-autocomplete>\n  \n          </mat-form-field>\n  \n        </form>\n      </mat-step>\n  \n  \n      <mat-step>\n        <ng-template matStepLabel>Fares</ng-template>\n  \n        <mat-card class=\"example-card\">\n  \n  \n          <div *ngIf=\"gotFares; then thenBlock else elseBlock\"></div>\n          <ng-template #thenBlock>\n  \n            <mat-card-header>\n              <div mat-card-avatar class=\"example-header-image\"></div>\n              <mat-card-title>FARES</mat-card-title>\n              <mat-card-subtitle>For the selected locations</mat-card-subtitle>\n            </mat-card-header>\n  \n            <mat-card-content>\n  \n              <div style=\"padding-top:30px\">\n  \n                <div style=\"float: left;padding-left:50px;\">\n                  <div>From</div>\n                  <h4>{{originAirport.name}}</h4>\n                  <h6>latitude: {{originAirport.latitude}} | longitude: {{originAirport.longitude}}</h6>\n                  <h5>{{originAirport.description}}</h5>\n                </div>\n                <div style=\"float: left; padding-left:50px;\">\n                  <div>To</div>\n                  <h4>{{destinationAirport.name}}</h4>\n                  <h6>latitude: {{destinationAirport.latitude}} | longitude: {{destinationAirport.longitude}}</h6>\n                  <h5>{{destinationAirport.description}}</h5>\n                </div>\n              </div>\n  \n              <div style=\"clear: both; padding-top:30px;padding-left:50px;\">\n               <h2>{{fares.amount}} {{fares.currency}}</h2>\n                \n             \n              </div>\n            </mat-card-content>\n  \n  \n  \n          </ng-template>\n          <ng-template #elseBlock>\n  \n  \n            <mat-card-header>\n              <div mat-card-avatar class=\"example-header-image\"></div>\n              <mat-card-title>Please wait</mat-card-title>\n              <mat-card-subtitle>while we fetch your fares</mat-card-subtitle>\n            </mat-card-header>\n  \n            <mat-card-content>\n              <div style=\"padding-left:50px; padding-top: 50px;\">\n                <mat-spinner></mat-spinner>\n              </div>\n  \n            </mat-card-content>\n  \n  \n          </ng-template>\n  \n  \n  \n        </mat-card>\n  \n  \n      </mat-step>\n    </mat-vertical-stepper>\n  \n  \n  </mat-card>"
+module.exports = "\n  <mat-card class=\"example-card\">\n  \n    \n    <h5>Find our exclusive fares!</h5>\n\n    <mat-vertical-stepper [linear]=\"true\" #stepper (selectionChange)=\"changedStep($event)\"  (animationDone)=\"stepperAnimationDone()\">\n  \n      <mat-step [stepControl]=\"formOrigin\" editable=\"true\" #stepOrigin>\n        <form [formGroup]=\"formOrigin\">\n          <ng-template matStepLabel>Select your origin </ng-template>\n          <mat-form-field>\n  \n            <input type=\"text\" formControlName=\"originControl\" placeholder=\"From\" aria-label=\"From\" matInput [formControl]=\"originControl\"\n              [matAutocomplete]=\"autoOrig\">\n            <mat-autocomplete autoActiveFirstOption #autoOrig=\"matAutocomplete\" [displayWith]=\"locationDisplayFn\">\n              <mat-option *ngFor=\"let location of filteredOriginLocations$ | async \" [value]=\"location\">\n                {{ location.name }}\n              </mat-option>\n            </mat-autocomplete>\n  \n  \n  \n          </mat-form-field>\n  \n        </form>\n      </mat-step>\n  \n      <mat-step [stepControl]=\"formDestination\" editable=\"true\" #stepDestination>\n        <form [formGroup]=\"formDestination\">\n          <ng-template matStepLabel>Select your destination </ng-template>\n          <mat-form-field>\n  \n            <input type=\"text\" formControlName=\"destinationControl\" placeholder=\"To\" aria-label=\"To\" matInput [formControl]=\"destinationControl\"\n              [matAutocomplete]=\"autoDest\">\n            <mat-autocomplete autoActiveFirstOption #autoDest=\"matAutocomplete\" [displayWith]=\"locationDisplayFn\">\n              <mat-option *ngFor=\"let location of filteredDestinationLocations$ | async \" [value]=\"location\">\n                {{ location.name }}\n              </mat-option>\n            </mat-autocomplete>\n  \n          </mat-form-field>\n  \n        </form>\n      </mat-step>\n  \n  \n      <mat-step>\n        <ng-template matStepLabel>Fares</ng-template>\n  \n        <mat-card class=\"example-card\">\n  \n  \n          <div *ngIf=\"gotFares; then thenBlock else elseBlock\"></div>\n          <ng-template #thenBlock>\n  \n            <mat-card-header>\n              <div mat-card-avatar class=\"example-header-image\"></div>\n              <mat-card-title>FARES</mat-card-title>\n              <mat-card-subtitle>For the selected locations</mat-card-subtitle>\n            </mat-card-header>\n  \n            <mat-card-content>\n  \n              <div style=\"padding-top:30px\">\n  \n                <div style=\"float: left;padding-left:50px;\">\n                  <div>From</div>\n                  <h4>{{originAirport.name}}</h4>\n                  <h6>latitude: {{originAirport.latitude}} | longitude: {{originAirport.longitude}}</h6>\n                  <h5>{{originAirport.description}}</h5>\n                </div>\n                <div style=\"float: left; padding-left:50px;\">\n                  <div>To</div>\n                  <h4>{{destinationAirport.name}}</h4>\n                  <h6>latitude: {{destinationAirport.latitude}} | longitude: {{destinationAirport.longitude}}</h6>\n                  <h5>{{destinationAirport.description}}</h5>\n                </div>\n              </div>\n  \n              <div style=\"clear: both; padding-top:30px;padding-left:50px;\">\n               <h2>{{fares.amount}} {{fares.currency}}</h2>\n                \n             \n              </div>\n            </mat-card-content>\n  \n  \n  \n          </ng-template>\n          <ng-template #elseBlock>\n  \n  \n            <mat-card-header>\n              <div mat-card-avatar class=\"example-header-image\"></div>\n              <mat-card-title>Please wait</mat-card-title>\n              <mat-card-subtitle>while we fetch your fares</mat-card-subtitle>\n            </mat-card-header>\n  \n            <mat-card-content>\n              <div style=\"padding-left:50px; padding-top: 50px;\">\n                <mat-spinner></mat-spinner>\n              </div>\n  \n            </mat-card-content>\n  \n  \n          </ng-template>\n  \n  \n  \n        </mat-card>\n  \n  \n      </mat-step>\n    </mat-vertical-stepper>\n  \n  \n  </mat-card>"
 
 /***/ }),
 
@@ -520,7 +524,7 @@ var Interceptor = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "table {\r\n    width: 100%;\r\n  }\r\n  \r\n  th.mat-sort-header-sorted {\r\n    color: black;\r\n  }"
 
 /***/ }),
 
@@ -531,7 +535,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  listairports works!\n</p>\n"
+module.exports = "\n\n  <mat-card class=\"example-card\">\n    \n      <h5 style=\"padding-bottom:40px;\"> Airport sortable paginated list. Extrapoints, yammy yammy!</h5>\n\n    <div class=\"mat-elevation-z8\">\n\n        <mat-form-field style=\"padding:20px;width:90%;\"> \n            <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n          </mat-form-field>\n\n<table mat-table #table [dataSource]=\"dataSource\"  matSort matSortActive=\"name\" matSortDirection=\"asc\" matSortDisableClear  class=\"mat-elevation-z8\">\n\n  <!--- Note that these columns can be defined in any order.\n        The actual rendered columns are set as a property on the row definition\" -->\n\n\n\n\n  <!-- Position Column -->\n  <ng-container matColumnDef=\"code\">\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> code </th>\n    <td mat-cell *matCellDef=\"let location\"> {{location.code}} </td>\n  </ng-container>\n\n  <!-- Name Column -->\n  <ng-container matColumnDef=\"name\">\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>\n    <td mat-cell *matCellDef=\"let location\"> {{location.name}} </td>\n  </ng-container>\n\n  <!-- Weight Column -->\n  <ng-container matColumnDef=\"description\" >\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> description </th>\n    <td mat-cell *matCellDef=\"let location\"> {{location.description}} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n<mat-paginator [pageSizeOptions]=\"[10, 20, 40]\" showFirstLastButtons></mat-paginator>\n\n</div>\n\n</mat-card>"
 
 /***/ }),
 
@@ -546,6 +550,20 @@ module.exports = "<p>\n  listairports works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListairportsComponent", function() { return ListairportsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/data.service */ "./src/app/services/data.service.ts");
+/* harmony import */ var _fares_fares_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fares/fares.component */ "./src/app/fares/fares.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -556,22 +574,75 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ListairportsComponent = /** @class */ (function () {
-    function ListairportsComponent() {
+
+
+
+
+var ListairportsComponent = /** @class */ (function (_super) {
+    __extends(ListairportsComponent, _super);
+    function ListairportsComponent(svc, fb) {
+        var _this = _super.call(this, svc, fb) || this;
+        _this.displayedColumns = ['code', 'name', 'description'];
+        return _this;
     }
     ListairportsComponent.prototype.ngOnInit = function () {
+        this.getLocationData();
     };
+    ListairportsComponent.prototype.gAfterViewInit = function () {
+        var _this = this;
+        this.sort.sortChange.subscribe(function () { return _this.paginator.pageIndex = 0; });
+        //merge(this.sort.sortChange, this.paginator.page).pipe().subscribe();
+    };
+    ListairportsComponent.prototype.applyFilter = function (filterValue) {
+        filterValue = filterValue.trim(); // Remove whitespace
+        filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+        this.dataSource.filter = filterValue;
+    };
+    ListairportsComponent.prototype.gotLocationsData = function () {
+        console.info('-- ListairportsComponent gotLocations()');
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](this.locations);
+        this.dataSource.sort = this.sort;
+        this.sortedData = this.locations.slice();
+        this.dataSource.paginator = this.paginator;
+    };
+    ListairportsComponent.prototype.sortData = function (sort) {
+        var data = this.locations.slice();
+        if (!sort.active || sort.direction == '') {
+            this.sortedData = data;
+            return;
+        }
+        this.sortedData = data.sort(function (a, b) {
+            var isAsc = sort.direction == 'asc';
+            switch (sort.active) {
+                case 'name': return compare(a.name, b.name, isAsc);
+                case 'code': return compare(+a.code, +b.code, isAsc);
+                case 'description': return compare(+a.description, +b.description, isAsc);
+                default: return 0;
+            }
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSort"])
+    ], ListairportsComponent.prototype, "sort", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginator"])
+    ], ListairportsComponent.prototype, "paginator", void 0);
     ListairportsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-listairports',
             template: __webpack_require__(/*! ./listairports.component.html */ "./src/app/listairports/listairports.component.html"),
             styles: [__webpack_require__(/*! ./listairports.component.css */ "./src/app/listairports/listairports.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
     ], ListairportsComponent);
     return ListairportsComponent;
-}());
+}(_fares_fares_component__WEBPACK_IMPORTED_MODULE_3__["FaresComponent"]));
 
+function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
 
 
 /***/ }),
@@ -589,8 +660,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -605,42 +677,53 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DataService = /** @class */ (function () {
-    function DataService(_http) {
+    function DataService(_http, snackBar) {
         this._http = _http;
-        this.endPointAirports = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endPointAirports;
-        this.endPointFares = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endPointFares;
-        this.endPointStats = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].endPointStats;
+        this.snackBar = snackBar;
+        this.endPointAirports = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].endPointAirports;
+        this.endPointFares = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].endPointFares;
+        this.endPointStats = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].endPointStats;
     }
     DataService.prototype.getLocationData = function () {
+        var _this = this;
         console.log('--DataService getLocationData()');
         return this._http.get(this.endPointAirports)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) { return result['_embedded']['locations']; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err, caught) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) { return result['_embedded']['locations']; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (err, caught) {
             console.log('err.error =', err.error, ';');
+            _this.dropMessage('Error getting Locations Data, please check your connection to the server.');
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(err);
         }));
     };
     DataService.prototype.getFaresData = function (origin, destination) {
+        var _this = this;
         console.log('--DataService getFaresData()');
         return this._http.get(this.endPointFares + '/' + origin + '/' + destination)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) { return result; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err, caught) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) { return result; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (err, caught) {
             console.log('err.error =', err.error, ';');
+            _this.dropMessage('Error getting Fares Data, please check your connection to the server.');
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(err);
         }));
     };
     DataService.prototype.getStatsData = function () {
+        var _this = this;
         console.log('--DataService getFaresData()');
         return this._http.get(this.endPointStats)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) { return result; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err, caught) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) { return result; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (err, caught) {
             console.log('err.error =', err.error, ';');
+            _this.dropMessage('Error getting Stats Data, please check your connection to the server. ');
             return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(err);
         }));
+    };
+    DataService.prototype.dropMessage = function (msg) {
+        var snackBarRef = this.snackBar.open(msg, '', { duration: 5000 });
     };
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
     ], DataService);
     return DataService;
 }());
