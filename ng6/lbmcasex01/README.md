@@ -24,9 +24,12 @@ This is the server hosting the JAVA application: http://localhost:9000, used mai
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Its possible that you need to update project dependencies by running `npm update`. After that run `ng build` to build the project. 
+The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+IMPORTANT!
 
 Git failed to upload the Symbolic Link.
 
-Please create a symlink  from folder "\ng6\lbmcasex01\dist" to folder "\src\main\resources\static\dist"
+To expose the frontend withing the Java Application, please create a symlink  from folder "\ng6\lbmcasex01\dist" to folder "\src\main\resources\static\dist"
 The java application is expecting the webpack files to be in the following folder: "\src\main\resources\static\dist\lbmcasex01"

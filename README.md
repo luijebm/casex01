@@ -41,9 +41,10 @@ The frontend build files are included in the java application by the use of a sy
 Git failed to add this symbolic link to the repo... 
 Please refer to "/ng6/readme" for more info. It is crucial to create this link before building the fronted.
 
-After creating the symlink, please build the frontend in its home directory `ng build` and build the backend in the root folder `gradlew bootRun`, please click on 
+After creating the symlink, please update Angular project dependencies by running `npm update` in its home directory. 
+Now build the frontend running  `ng build` and build the backend in the root folder by running `gradlew bootRun`. 
 
-[http://localhost:9000/index.html](http://localhost:9000/index.html)
+After that click on: [http://localhost:9000/index.html](http://localhost:9000/index.html)
 
 Paths are not correctly setup in the ResourceHandlerRegistry to support Angular routing system, so if you refresh an Angular page you will get a 404.
 Please stick to this URL for app launching.
